@@ -13,8 +13,8 @@ app.use(bodyParser.json());
 app.use(cookieparser());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use("api/users", usersRouter);
-app.use("api/url", urlRouter);
+app.use("/api/users", usersRouter);
+app.use("/api/url", urlRouter);
 app.get("/", (req, res) => {
     res.status(200).send({ msg: "Hello world" });
 });
