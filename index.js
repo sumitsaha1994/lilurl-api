@@ -18,7 +18,9 @@ app.use("/url", urlRouter);
 app.get("/", (req, res) => {
     res.status(200).send({ msg: "Hello world" });
 });
-
+app.use((req, res, next) => {
+    handleError({ statusCode: 404, message: "not found" }, res);
+});
 app.use((err, req, res, next) => {
     console.log(err);
     if (res.headersSent) {
