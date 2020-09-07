@@ -13,7 +13,11 @@ const cors = require("cors");
 app.use(bodyParser.json());
 app.use(cookieparser());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+    cors({
+        credentials: true,
+    })
+);
 
 app.use("/api/users", usersRouter);
 app.use("/api/url", urlRouter);
