@@ -8,10 +8,12 @@ const usersRouter = require("./routers/usersRouter");
 const { handleError } = require("./util/errorHandler");
 const urlRouter = require("./routers/urlRouter");
 const app = express();
+const cors = require("cors");
 
 app.use(bodyParser.json());
 app.use(cookieparser());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use("/api/users", usersRouter);
 app.use("/api/url", urlRouter);
