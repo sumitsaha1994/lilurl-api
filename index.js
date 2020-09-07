@@ -22,8 +22,8 @@ app.use(
 
 app.use("/api/users", usersRouter);
 app.use("/api/url", urlRouter);
-app.get("/", (req, res) => {
-    res.status(200).send({ msg: "Hello world" });
+app.get("api/", (req, res) => {
+    res.status(200).send("<h1>Welcome to Lilurl api</h1>");
 });
 app.use((req, res, next) => {
     handleError({ statusCode: 404, message: "not found" }, res);
