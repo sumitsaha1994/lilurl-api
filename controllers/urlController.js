@@ -147,28 +147,28 @@ exports.getUrlCountLastSevenDays = async (req, res, next) => {
         );
         console.log(urls);
         let urlCounts = [];
-        let i = 0;
-        while (i <= 6) {
+        let urlIndex = 0;
+        while (urlIndex <= 6) {
             let d;
-            if (i == 0) {
+            if (urlIndex == 0) {
                 d = currentDate;
             } else {
                 d = new Date();
-                d.setDate(currentDate.getDate() - i);
+                d.setDate(currentDate.getDate() - urlIndex);
             }
 
             urlCounts.push({
                 day: `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`,
                 count: urls.filter((url) => {
-                    let d1 = `${url.created_at.getFullYear()}-${url.created_at.getMonth() + 1}-${
-                        url.created_at.getDate() + 1
-                    }`;
+                    let d1 = `${url.created_at.getFullYear()}-${
+                        url.created_at.getMonth() + 1
+                    }-${url.created_at.getDate()}`;
 
                     let d2 = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
                     return d1 === d2;
                 }).length,
             });
-            i++;
+            urlIndex++;
         }
         sendResponse(
             200,
