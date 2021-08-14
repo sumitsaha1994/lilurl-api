@@ -3,6 +3,7 @@ const { sendResponse } = require("../util/responseHandler");
 const { ErrorHandler } = require("../util/errorHandler");
 const URL = require("../models/urlModel");
 
+// get short url
 exports.getShortUrlByMainUrl = async (req, res, next) => {
     try {
         const mainUrl = req.params.url;
